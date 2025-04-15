@@ -2686,7 +2686,7 @@ GameObject:
   - component: {fileID: 327749543}
   - component: {fileID: 327749544}
   m_Layer: 0
-  m_Name: bow
+  m_Name: Bow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2886,6 +2886,37 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &715200103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 715200104}
+  m_Layer: 0
+  m_Name: ShootPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &715200104
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715200103}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.75, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 869297581}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &869297580
 GameObject:
   m_ObjectHideFlags: 0
@@ -2917,6 +2948,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 327749543}
+  - {fileID: 715200104}
   m_Father: {fileID: 1293145184}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &869297582
@@ -2933,6 +2965,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimSpeed: 15
   playerTransform: {fileID: 981081603}
+  shootPosition: {fileID: 715200104}
+  arrowPrefab: {fileID: 1036907937294549478, guid: 832acdb63bf708247b6d9ef359f5e90e, type: 3}
 --- !u!1 &981081601
 GameObject:
   m_ObjectHideFlags: 0
