@@ -9,7 +9,7 @@ public class AimAndShoot : MonoBehaviour
     [SerializeField] private Transform playerTransform, shootPosition;
     [SerializeField] private GameObject arrowPrefab;
     private Camera mainCamera;
-    private Vector2 mouseWorldPosition;
+    private Vector2 mouseWorldPosition, direction;
 
 
     // Start is called before the first frame update
@@ -25,14 +25,15 @@ public class AimAndShoot : MonoBehaviour
         Aim();
         if(Input.GetButtonDown("Fire1"))
         {
-            Instantiate(arrowPrefab,shootPosition.position,Quaternion.identity);
+            GameObject arrow = Instantiate(arrowPrefab,direction,shootPosition.rotation);
+            arrow.GetComponent<Arrow>().Launch(direction);
         }
     }
 
     private void Aim()
     {
         mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = mouseWorldPosition - (Vector2)playerTransform.position;
+        direction = (mouseWorldPosition - (Vector2)playerTransform.position).normalized;
         transform.right = Vector2.MoveTowards(transform.right, direction, aimSpeed);
     }
 }

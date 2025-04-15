@@ -5,10 +5,10 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     [SerializeField] private float speed = 15f;
-    // Start is called before the first frame update
-    void Start()
+
+    public void Launch(Vector2 direction)
     {
-        GetComponent<Rigidbody2D>().velocity = transform.right * speed;
+        GetComponent<Rigidbody2D>().velocity = direction * speed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
