@@ -25,7 +25,7 @@ public class AimAndShoot : MonoBehaviour
         Aim();
         if(Input.GetButtonDown("Fire1"))
         {
-            GameObject arrow = Instantiate(arrowPrefab,direction,shootPosition.rotation);
+            GameObject arrow = Instantiate(arrowPrefab,shootPosition.position,shootPosition.rotation);
             arrow.GetComponent<Arrow>().Launch(direction);
         }
     }
