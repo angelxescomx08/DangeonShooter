@@ -5,6 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] private GameObject explosionPrefab;
+    [SerializeField] private Healthbar healthbar;
     [SerializeField] private int maxHealth = 5;
     SpriteRenderer spriteRenderer;
     private int health;
@@ -33,6 +34,7 @@ public class Health : MonoBehaviour
         }
         else
         {
+            healthbar.UpdateHealthbar(maxHealth, health);
             // Start blinking
             StartCoroutine(Blink(0.1f));
         }
