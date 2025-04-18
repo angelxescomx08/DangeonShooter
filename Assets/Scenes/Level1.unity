@@ -287,6 +287,50 @@ Transform:
   - {fileID: 211609350}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &199728622
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 199728624}
+  - component: {fileID: 199728623}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &199728623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199728622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 542ac0b04e823a04caa04817b5b7887b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &199728624
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199728622}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &211609349
 GameObject:
   m_ObjectHideFlags: 0
@@ -3102,6 +3146,7 @@ GameObject:
   - component: {fileID: 981081603}
   - component: {fileID: 981081602}
   - component: {fileID: 981081605}
+  - component: {fileID: 981081608}
   - component: {fileID: 981081604}
   - component: {fileID: 981081606}
   - component: {fileID: 981081607}
@@ -3285,6 +3330,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.57755244, y: 0.5533073}
   m_EdgeRadius: 0
+--- !u!114 &981081608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981081601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12eaeddf64094d543ba8f04934b83f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1146922169
 GameObject:
   m_ObjectHideFlags: 0
@@ -15604,6 +15661,10 @@ MonoBehaviour:
   - {fileID: 77849181}
   - {fileID: 792118403}
   - {fileID: 1977646008}
+  enemiesPerWave: 5
+  waves: 3
+  spawnInterval: 0.7
+  timeBetweenWave: 7
 --- !u!4 &1509108122
 Transform:
   m_ObjectHideFlags: 0
@@ -15738,3 +15799,4 @@ SceneRoots:
   - {fileID: 1293145184}
   - {fileID: 1465979833}
   - {fileID: 1509108122}
+  - {fileID: 199728624}
