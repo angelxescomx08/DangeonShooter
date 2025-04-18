@@ -6,23 +6,25 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] private int enemiesPerWave = 3, waves = 3;
+    [SerializeField] private float spawnInterval = 0.7f, timeBetweenWave = 7f;
+
     void Start()
     {
-        
+        StartCoroutine(Spawn());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator Spawn()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        for(int i = 0; i < waves; i++)
         {
-            Spawn();
+            for (int j = 0; j < enemiesPerWave; j++)
+            {
+                yield return new WaitForSeconds(spawnInterval);
+                int randomIndex = Random.Range(0, spawnPoints.Length);
+                Instantiate(enemyPrefab, spawnPoints[randomIndex].position, Quaternion.identity);
+            }
+            yield return new WaitForSeconds(timeBetweenWave);
         }
-    }
-
-    private void Spawn()
-    {
-        int randomIndex = Random.Range(0, spawnPoints.Length);
-        Instantiate(enemyPrefab, spawnPoints[randomIndex].position, Quaternion.identity);
     }
 }
