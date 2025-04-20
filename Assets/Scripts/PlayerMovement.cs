@@ -18,6 +18,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if(GameManager.instance.isPlayerDead)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
         ProcessInputs();
         Flip();
         animator.SetFloat("Speed", input.magnitude);

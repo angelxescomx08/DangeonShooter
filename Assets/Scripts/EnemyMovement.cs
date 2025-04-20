@@ -38,4 +38,9 @@ public class EnemyMovement : MonoBehaviour
             isFacingRight = !isFacingRight;
         }
     }
+
+    public void StopMovement()
+    {
+        speed = 0f;
+    }
 }

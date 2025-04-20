@@ -16,6 +16,7 @@ public class PlayerCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             animator.SetTrigger("Die");
+            GameManager.instance.Die();
         }
     }
 }

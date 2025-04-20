@@ -21,11 +21,20 @@ public class AimAndShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.isPlayerDead)
+        {
+            return;
+        }
         transform.position = playerTransform.position;
         Aim();
-        if(Input.GetButtonDown("Fire1"))
+        Shoot();
+    }
+
+    private void Shoot()
+    {
+        if (Input.GetButtonDown("Fire1"))
         {
-            GameObject arrow = Instantiate(arrowPrefab,shootPosition.position,shootPosition.rotation);
+            GameObject arrow = Instantiate(arrowPrefab, shootPosition.position, shootPosition.rotation);
             arrow.GetComponent<Arrow>().Launch(direction);
         }
     }
