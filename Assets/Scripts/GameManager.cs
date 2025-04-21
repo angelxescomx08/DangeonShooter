@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private TMP_Text livesText;
+    [SerializeField] private int lives = 3;
     public bool isPlayerDead { get; private set; } = false;
     public static GameManager instance { get; private set; }
 
@@ -17,12 +20,27 @@ public class GameManager : MonoBehaviour
         else
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        UpdateLivesText();
+    }
+
+    private void UpdateLivesText()
+    {
+        livesText.text = "Lives: " + lives.ToString();
     }
 
     public void Die()
     {
         isPlayerDead = true;
+
+        lives--;
+
+        UpdateLivesText();
 
         StopEnemiesSpawn();
 
@@ -34,6 +52,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator WaitAndRestart(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
+        isPlayerDead = false;
         int activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(activeSceneIndex);
     }
