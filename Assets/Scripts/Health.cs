@@ -31,6 +31,7 @@ public class Health : MonoBehaviour
         {
             Destroy(gameObject);
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            GameManager.instance.DecreaseEnemiesLeft();
         }
         else
         {

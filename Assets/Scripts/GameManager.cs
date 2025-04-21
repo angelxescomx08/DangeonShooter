@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     public bool isPlayerDead { get; private set; } = false;
     public static GameManager instance { get; private set; }
 
+    private int enemiesLeft = 0;
+    private bool allWavesSpawned = false;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -34,6 +37,33 @@ public class GameManager : MonoBehaviour
         livesText.text = "Lives: " + lives.ToString();
     }
 
+    public void IncreaseEnemiesLeft()
+    {
+        enemiesLeft++;
+    }
+
+    public void DecreaseEnemiesLeft()
+    {
+        enemiesLeft--;
+        if (enemiesLeft <= 0 && allWavesSpawned)
+        {
+            //pasar de nivel
+            LoadNextScene();
+        }
+    }
+
+    public void SetAllwavesSpawned()
+    {
+        allWavesSpawned = true;
+    }
+
+    private void LoadNextScene()
+    {
+        Reset();
+        int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
+        SceneManager.LoadScene(nextScene);
+    }
+
     public void Die()
     {
         isPlayerDead = true;
@@ -49,10 +79,17 @@ public class GameManager : MonoBehaviour
         StartCoroutine(WaitAndRestart(0.5f));
     }
 
+    private void Reset()
+    {
+        enemiesLeft = 0;
+        allWavesSpawned = false;
+        isPlayerDead = false;
+    }
+
     private IEnumerator WaitAndRestart(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        isPlayerDead = false;
+        Reset();
         int activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(activeSceneIndex);
     }

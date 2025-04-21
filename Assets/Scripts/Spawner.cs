@@ -23,8 +23,13 @@ public class Spawner : MonoBehaviour
                 yield return new WaitForSeconds(spawnInterval);
                 int randomIndex = Random.Range(0, spawnPoints.Length);
                 Instantiate(enemyPrefab, spawnPoints[randomIndex].position, Quaternion.identity);
+                GameManager.instance.IncreaseEnemiesLeft();
             }
-            yield return new WaitForSeconds(timeBetweenWave);
+            if (i < waves - 1)
+            {
+                yield return new WaitForSeconds(timeBetweenWave);
+            }
         }
+        GameManager.instance.SetAllwavesSpawned();
     }
 }
