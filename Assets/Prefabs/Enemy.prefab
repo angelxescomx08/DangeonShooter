@@ -403,6 +403,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d027e3dd1a88736408fbd6ffa7f10406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitClip: {fileID: 8300000, guid: 638dce05f8cb2d640b80b001d06c27d5, type: 3}
+  dieClip: {fileID: 8300000, guid: 8bffe384fd737db4c826cf5111c5e0cc, type: 3}
   explosionPrefab: {fileID: 7048637274761939073, guid: 1de0dd61a483ae34faf546c16abc9646, type: 3}
   healthbar: {fileID: 4467808111146975539}
   maxHealth: 5

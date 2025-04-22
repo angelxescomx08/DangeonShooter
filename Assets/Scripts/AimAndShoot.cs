@@ -8,9 +8,9 @@ public class AimAndShoot : MonoBehaviour
     [SerializeField] private float aimSpeed = 15f;
     [SerializeField] private Transform playerTransform, shootPosition;
     [SerializeField] private GameObject arrowPrefab;
+    [SerializeField] private AudioClip launchArrowClip;
     private Camera mainCamera;
     private Vector2 mouseWorldPosition, direction;
-
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +36,7 @@ public class AimAndShoot : MonoBehaviour
         {
             GameObject arrow = Instantiate(arrowPrefab, shootPosition.position, shootPosition.rotation);
             arrow.GetComponent<Arrow>().Launch(direction);
+            AudioManager.instance.PlaySoundEffect(launchArrowClip, 0.5f);
         }
     }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
+    [SerializeField] private AudioClip dieClip;
     private Animator animator;
 
     private void Start()
@@ -16,6 +17,7 @@ public class PlayerCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             animator.SetTrigger("Die");
+            AudioManager.instance.PlaySoundEffect(dieClip, 1f);
             GameManager.instance.Die();
         }
     }

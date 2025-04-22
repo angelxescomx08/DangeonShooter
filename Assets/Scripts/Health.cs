@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    [SerializeField] private AudioClip hitClip, dieClip;
     [SerializeField] private GameObject explosionPrefab;
     [SerializeField] private Healthbar healthbar;
     [SerializeField] private int maxHealth = 5;
@@ -32,11 +33,12 @@ public class Health : MonoBehaviour
             Destroy(gameObject);
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             GameManager.instance.DecreaseEnemiesLeft();
+            AudioManager.instance.PlaySoundEffect(dieClip, 0.5f);
         }
         else
         {
             healthbar.UpdateHealthbar(maxHealth, health);
-            // Start blinking
+            AudioManager.instance.PlaySoundEffect(hitClip, 0.5f);
             StartCoroutine(Blink(0.1f));
         }
     }
